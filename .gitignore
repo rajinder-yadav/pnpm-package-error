@@ -1,0 +1,17 @@
+build/
+dist/
+docs/project/
+img/svg/
+log/
+node_modules/
+tmp/
+typings/
+.nyc_output/
+coverage/
+
+*.bak
+*.log
+npm-debug.log*
+yarn-error.log*
+
+.DS_Store

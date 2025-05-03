@@ -1,0 +1,76 @@
+@PORT=3100
+@HOST=localhost
+
+###
+get http://{{HOST}}:{{PORT}}
+
+###
+post http://{{HOST}}:{{PORT}}
+
+###
+put http://{{HOST}}:{{PORT}}
+
+###
+delete http://{{HOST}}:{{PORT}}
+
+### Path not defined
+get http://{{HOST}}:{{PORT}}/xyz
+
+### API not defined
+patch http://{{HOST}}:{{PORT}}
+
+###
+get http://{{HOST}}:{{PORT}}/error
+
+############################
+### Test JWT using a secert
+############################
+
+### Login 1 - Valid User
+POST http://{{HOST}}:{{PORT}}/api/v1/login/secret
+Content-Type: application/json
+
+{
+  "name": "Rajinder", "password":"ldkfj34kjrpoiro34lj5l345"
+}
+
+### Protect route valid
+GET http://{{HOST}}:{{PORT}}/api/v1/protected/secret
+Content-Type: application/json
+
+### Login 2 - Invalid User
+POST http://{{HOST}}:{{PORT}}/api/v1/login/secret
+Content-Type: application/json
+
+{
+  "name": "Shivaji"
+}
+
+#############################
+### Test JWT using a SSL keys
+#############################
+
+### Login 1 - Valid User
+POST http://{{HOST}}:{{PORT}}/api/v1/login/key
+Content-Type: application/json
+
+{
+  "name": "Rajinder", "password":"ldkfj34kjrpoiro34lj5l345"
+}
+
+### Protect route valid
+GET http://{{HOST}}:{{PORT}}/api/v1/protected/key
+Content-Type: application/json
+
+### Protect route valid
+GET http://{{HOST}}:{{PORT}}/api/v1/protected/bearer
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2hpdmFqaSIsImV4cCI6MTcwMjk3ODA3OSwiaWF0IjoxNzAyOTc4MDU5fQ.f6pclyvNa1kaQ3aTMqfWsII7EK-JBNIdVbqAqbZy2sYWQ9iRZi1-rCtRtbg6gNUXKqNib6NIeL1Bzzrlcg5UZVOXTlfDUHhrg2rbduaLCCtJbRAWL-2xRAlAjyhrVIVOj4RF1MFImeqxsxlbqWWHvm2dH0oEDqUTTMSxI-fp7KqBSKDiHHpes-2rSVhKxh3jIo60exMJwQaFOZXUP8qa1oMG1c41_D_OkRSU3H_hjla_NsPb7KancX5f5bg5r6Zyc30WUT4Za1OM_MIBRORxOo9KfQG_12LBaIT5C7OteJeoGqOtzcoD2H02t5MjpC0CZMXQHfRsXkRc1EZ7rc3Se3HvXKxlQnoctriMYATIxCsSwjCJoxNkBKaY-G2qs-13BfXdOa-LI-yIO11xrvjWD5ENqaRZgDBEWWYRhJ9T9aFb7hHP49XrU-wuvsFoF9OLEqBGrxiw6AXsOQUXnI2ZXeZ42ArzSHMKch_YGWdxTpRpM6MKAx7JiLlB6QGfPtn-0r3pH5hChJtszXyNueX8H9JtKN_7qZOiAS3pXVZJNSftvKdhzGK2brV3hs_m7-KuaiMLa-_eR9TdWMM45BR74SsXuCMam4oP-GQUWSjCx4lq0sk_MMiVZNqZWoTVKi30tPMUaLD6ZZMkpmnD-weZ9otNrEd8pWWM6ylSIKyVvn4
+
+### Login 2 - Invalid User
+POST http://{{HOST}}:{{PORT}}/api/v1/login/key
+Content-Type: application/json
+
+{
+  "name": "Shivaji"
+}
