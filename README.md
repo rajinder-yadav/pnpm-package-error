@@ -2,6 +2,13 @@
 
 __Note__: Delete all lock files (npm, pnpm, yarn)  and "__node_modules/__" directories first, if they exist.
 
+__ISSUE__: This happen with both 'sqlite3' and 'better-sqlite3' NPM package, this project is using 'sqlite3' NPM package to show the error, but I would update the code to also use 'better-sqlite3' NPM and make sure the PNPM issue has been fixed.
+
+## Effect NPM packages:
+
+- https://www.npmjs.com/package/sqlite3
+- https://www.npmjs.com/package/better-sqlite3
+
 ## Using PNPM
 
 Install and run project:
